@@ -83,37 +83,82 @@
 // THIS KEYWORD
 // console.log(this); 
 
-const calcAge = function(birthYear) {
-  console.log(2024 - birthYear);
-  // console.log(this);
-};
+// const calcAge = function(birthYear) {
+//   console.log(2024 - birthYear);
+//   // console.log(this);
+// };
 
-calcAge(1998); 
+// calcAge(1998); 
 
 
-const calcAgeArrow = birthYear => {
-  console.log(2024 - birthYear);
-  // console.log(this);
-};
+// const calcAgeArrow = birthYear => {
+//   console.log(2024 - birthYear);
+//   // console.log(this);
+// };
 
-calcAgeArrow(1998); 
+// calcAgeArrow(1998); 
+
+// malik.calcAge(); 
+
+// const carmen = {
+//   year: 1998,
+// };
+// // method borrowing
+// carmen.calcAge = malik.calcAge; 
+// carmen.calcAge();
+
+// const f = malik.calcAge; 
+// f();
+
+// creates properties on the global object
+// var firstName = 'Carmen';
 
 const malik = {
+  firstName: 'Malik',
   year: 1998,
-  calcAge: function() {
+  calcAge: function () {
     console.log(this);
     console.log(2024 - this.year);
+    // SOLUTION 1
+    // const self = this; // self or that
+    // const isMillenial = function () {
+    //   // This keyword is undefined inside of a regular function call
+    //   console.log();
+    //   // console.log(this.year >= 1981 && this.year >= 1996);
+    //   console.log(self.year >= 1981 && self.year >= 1996);
+    // };
+
+    // SOLUTION 2 ARROW FUNCTION AND THIS KEYWORD
+    const isMillenial = () => {
+      console.log(this);
+      // console.log(this.year >= 1981 && this.year >= 1996);
+      console.log(this.year >= 1981 && this.year >= 1996);
+    };
+    isMillenial();
+  },
+  // Do not create methods using arrow functions
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
   }
 };
+malik.greet();
+malik.calcAge();
 
-malik.calcAge(); 
 
-const carmen = {
-  year: 1998,
+// arguements keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
-// method borrowing
-carmen.calcAge = malik.calcAge; 
-carmen.calcAge();
 
-const f = malik.calcAge; 
-f();
+addExpr(2, 5);
+addExpr(2, 5);
+
+// arguments keyword does not work in arrow functions
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b
+// };
+
+// addArrow(2,5,8); 
