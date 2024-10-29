@@ -113,12 +113,12 @@
 // creates properties on the global object
 // var firstName = 'Carmen';
 
-const malik = {
-  firstName: 'Malik',
-  year: 1998,
-  calcAge: function () {
-    console.log(this);
-    console.log(2024 - this.year);
+// const malik = {
+//   firstName: 'Malik',
+//   year: 1998,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2024 - this.year);
     // SOLUTION 1
     // const self = this; // self or that
     // const isMillenial = function () {
@@ -129,31 +129,31 @@ const malik = {
     // };
 
     // SOLUTION 2 ARROW FUNCTION AND THIS KEYWORD
-    const isMillenial = () => {
-      console.log(this);
-      // console.log(this.year >= 1981 && this.year >= 1996);
-      console.log(this.year >= 1981 && this.year >= 1996);
-    };
-    isMillenial();
-  },
-  // Do not create methods using arrow functions
-  greet: () => {
-    console.log(this);
-    console.log(`Hey ${this.firstName}`);
-  }
-};
-malik.greet();
-malik.calcAge();
+//     const isMillenial = () => {
+//       console.log(this);
+//       // console.log(this.year >= 1981 && this.year >= 1996);
+//       console.log(this.year >= 1981 && this.year >= 1996);
+//     };
+//     isMillenial();
+//   },
+//   // Do not create methods using arrow functions
+//   greet: () => {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   }
+// };
+// malik.greet();
+// malik.calcAge();
 
 
 // arguements keyword
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
 
-addExpr(2, 5);
-addExpr(2, 5);
+// addExpr(2, 5);
+// addExpr(2, 5);
 
 // arguments keyword does not work in arrow functions
 // var addArrow = (a, b) => {
@@ -162,3 +162,54 @@ addExpr(2, 5);
 // };
 
 // addArrow(2,5,8); 
+/*
+let age = 26;
+let oldAge = age;
+age = 27;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: `Jonas`,
+  age: 26,
+};
+
+const friend = me;
+friend.age = 28;
+console.log('Friend:', friend);
+console.log('Me', me);
+*/
+// Primitive types
+let lastName = 'Torres';
+let oldLastName = lastName;
+lastName = 'Rivera';
+console.log(lastName, oldLastName);
+
+// Reference types
+const carmen = {
+  firstName: "Carmen",
+  lastName: 'Garrigues',
+  age: 26,
+};
+
+// Another variable in the stack holding the reference to the original address
+const marriedCarmen = carmen; 
+marriedCarmen.lastName = 'Torres';
+console.log('Before marrage', carmen);
+console.log('After marriage', marriedCarmen); 
+
+// Copying objects
+const carmen2 = {
+  firstName: "Carmen",
+  lastName: 'Garrigues',
+  age: 26,
+  family: ['Lucia','Nacho'],
+}; 
+// shallow copy, copies in the first level
+const carmenCopy = Object.assign({}, carmen2);
+carmenCopy.lastName = 'Torres';
+
+carmenCopy.family.push('Maria');
+carmenCopy.family.push('Salva')
+console.log('Before marriage:', carmen2);
+console.log('After marriage:', carmenCopy);
